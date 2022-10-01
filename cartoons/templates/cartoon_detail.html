@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="p-3 mb-2 bg-warning text-dark">
+    <div class="row">
+        <h1 style="margin-left: 8px;">{{cartoon.title}}</h1>
+        <div class="col-md-6">
+            <img style="margin-left: 8px;" src="{{ cartoon.image.url }}" class="img-thumbnail" alt="cartoon">
+        </div>
+        <div class="col-md-4 mx-auto" style="margin-top: 25px;">
+            <h4>Страна</h4>
+            <p style="border-bottom: 3px solid #000;">{{cartoon.country}}</p>
+            <h4>Дата премьеры</h4>
+            <p style="border-bottom: 3px solid #000;">{{cartoon.premiere}}</p>
+            <h4>Бюджет</h4>
+            <p style="border-bottom: 3px solid #000;">{{cartoon.budget}}$</p>
+            <h4>Сборы в мире</h4>
+            <p style="border-bottom: 3px solid #000;">{{cartoon.fees}}$</p>
+            <div class="col-md-4">
+                <a href="{% url 'cartoon_index' %}" class="btn btn-dark col-md-8">Назад</a>
+            </div>
+        </div>
+        <div href="{% url 'cartoon_detail' cartoon.pk %}">
+            <div class="col-md-8" style="margin-left: 15px;">
+                <h2>Про мультфильм</h2>
+                <p>{{cartoon.description}}</p>
+            </div>            
+            <div class="col-md-8" style="margin-left: 15px;">
+                <h2>Сюжет</h2>
+                <p>{{cartoon.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

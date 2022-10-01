@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Мультфильмы</h1>
+    <div class="row">
+        {% for cartoon in cartoons %}
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <img src="{{ cartoon.image.url }}" class="rounded float-end" alt="cartoon">
+                <div class="card-body">
+                    <h5 class="card-title">{{cartoon.title}}</h5>
+                    <p class="card-text">{{cartoon.category}}</p>
+                    <div class="d-grid gap-2 btn btn-dark">
+                        <a href="{% url 'cartoon_detail' cartoon.pk %}" class="btn btn-dark" type="button">Смотреть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

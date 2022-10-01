@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Фильмы</h1>
+<div class="row">
+    {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card mb-2">
+                <img src="{{ project.image.url }}" class="rounded float-end" alt="movie">
+                <div class="card-body">
+                    <h5 class="card-title">{{project.title}}</h5>
+                    <p class="card-text">{{project.category}}</p>
+                    <div class="d-grid gap-2 btn btn-dark">
+                        <a href="{% url 'project_detail' project.pk %}" class="btn btn-dark" type="button">Смотреть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

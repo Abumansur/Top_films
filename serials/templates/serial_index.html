@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="p-3 mb-2 bg-dark text-white">
+    <h1>Сериалы</h1>
+    <div class="row">
+        {% for serial in serials %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img src="{{ serial.image.url }}" class="rounded float-end" alt="serial">
+                    <div class="card-body">
+                        <h5 class="card-title">{{serial.title}}</h5>
+                        <p class="card-text">{{serial.category}}</p>
+                        <div class="d-grid gap-2 btn btn-dark">
+                            <a href="{% url 'serial_detail' serial.pk %}" class="btn btn-dark" type="button">Смотреть</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
